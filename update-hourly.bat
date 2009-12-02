@@ -1,0 +1,1 @@
+D:\xampp\xampplite\php\php.exe -f "D:\xampp\xampplite\htdocs\scraper.php"
