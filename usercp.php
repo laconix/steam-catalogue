@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if ($_SESSION['loggedin'] != true) {
-	header("Location: /index.php");
+	header('Location: /index.php');
 }
 include 'shared.php';
 ?>
@@ -17,26 +17,26 @@ tr:hover { background: lightblue; color: black; }
 <?php 
 if ($_SESSION['track_exists'] == true) {
 	$_SESSION['track_exists'] = false;
-	echo "Sorry, you already added that game.";
+	echo 'Sorry, you already added that game.';
 }
 ?>
 
 <table>
 <tr>
 <th>
-	<form method=post action='add.php'>
-		<select name='toadd'>
+	<form method="post" action="add.php">
+		<select name="toadd">
 		
 		<?php
 		
 		foreach ($games as $game) {
-			echo "<option value='" . $game['name'] . "'>" . $game['name'] . "</option>";
+			echo '<option value="' . $game['name'] . '">' . $game['name'] . '</option>';
 		}
 		
 		?>
 		
 		</select>
-		<input type=submit value='Add'>
+		<input type="submit" value="Add">
 	</form>
 </table>
 
@@ -45,7 +45,7 @@ if ($_SESSION['track_exists'] == true) {
 <?php
 if ($tracked) {
 	foreach ($tracked as $track) {
-		echo "<tr><td>" . $track . "</td></tr>";
+		echo '<tr><td>' . $track . '</td></tr>';
 	}
 }
 ?>

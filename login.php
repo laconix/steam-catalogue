@@ -2,7 +2,7 @@
 session_start();
 
 if ($_GET['logout'] != true) {
-	$userslist = @fopen("users","r");
+	$userslist = @fopen('users','r');
 	if ($userslist) {
 		$i = 1;
 		while (!feof($userslist)) {
@@ -26,6 +26,6 @@ if ($_GET['logout'] != true) {
 	session_destroy();
 }
 
-header("Location: /index.php");
+header('Location: /index.php');
 
 ?>

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if ($_SESSION['loggedin'] != true) {
-	header("Location: /index.php");
+	header('Location: /index.php');
 }
 include 'shared.php';
 
@@ -18,8 +18,8 @@ if ($tracked) {
 if ($exists) {
 	$_SESSION['track_exists'] = true;
 } else {
-	file_put_contents("./track/" . $_SESSION["logname"], $_POST['toadd'] . "\n",FILE_APPEND);
+	file_put_contents('./track/' . $_SESSION['logname'], $_POST['toadd'] . "\n",FILE_APPEND);
 }
 
-header("Location: /usercp.php");
+header('Location: /usercp.php');
 ?>
