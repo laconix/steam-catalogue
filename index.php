@@ -31,7 +31,7 @@ tr:hover { background: lightblue; color: black; }
 			$c++;
 		}
 		
-		echo '<tr><td>' . substr($game['name'], 0, 30) . '</td><td>$' . $oldgames[$pos]['price'] . '</td>';
+		echo '<tr><td>' . substr($game['name'], 0, 28) . '</td><td>$' . $oldgames[$pos]['price'] . '</td>';
 		if ($game['price'] > $oldgames[$pos]['price']) {
 			echo '</td><td style="background-image:url(up.PNG);"></td>';
 		} elseif ($game['price'] < $oldgames[$pos]['price']) {
@@ -84,32 +84,34 @@ tr:hover { background: lightblue; color: black; }
 			</tr>
 			<tr height="17px"><th> Game </th><th> SOW </th><th style="padding:8px;"> </th><th> NOW </th><th style="padding-right:35px;"> </th></tr>
 			<?php
-				if ($tracked) {
-					foreach ($games as $game) {
-						$match = false;
-						foreach ($tracked as $track) {
-							if ($game['name'] == trim($track)) {
-								$match = true;
-							}
+			$pos = 0;
+			if ($tracked) {
+				foreach ($games as $game) {
+					$pos++;
+					$match = false;
+					foreach ($tracked as $track) {
+						if ($game['name'] == trim($track)) {
+							$match = true;
 						}
-						if ($match) {
-							echo '<tr><td>' . substr($game['name'], 0, 30) . '</td><td>$' . $oldgames[$pos]['price'] . '</td>';
-							if ($game['price'] > $oldgames[$pos]['price']) {
-								echo '</td><td style="background-image:url(up.PNG);"></td>';
-							} elseif ($game['price'] < $oldgames[$pos]['price']) {
-								echo '</td><td style="background-image:url(down.PNG);"></td>';
-							} else {
-								echo '</td><td style="background-image:url(no.PNG);"></td>';
-							}
-							if ($game['sale']) {
-								echo '<td style="background:yellow;">$' . $game['price'] . '</td><td style="background:red;"> sale </td></tr>';
-							} else {
-								echo '<td>$' . $game['price'] . '</td>';
-							}
+					}
+					if ($match) {
+						echo '<tr><td>' . substr($game['name'], 0, 28) . '</td><td>$' . $oldgames[$pos]['price'] . '</td>';
+						if ($game['price'] > $oldgames[$pos]['price']) {
+							echo '</td><td style="background-image:url(up.PNG);"></td>';
+						} elseif ($game['price'] < $oldgames[$pos]['price']) {
+							echo '</td><td style="background-image:url(down.PNG);"></td>';
+						} else {
+							echo '</td><td style="background-image:url(no.PNG);"></td>';
+						}
+						if ($game['sale']) {
+							echo '<td style="background:yellow;">$' . $game['price'] . '</td><td style="background:red;"> sale </td></tr>';
+						} else {
+							echo '<td>$' . $game['price'] . '</td>';
 						}
 					}
 				}
-			?>
+			}
+		?>
 		</table>
 		<br><br>	
 </td>
@@ -117,10 +119,6 @@ tr:hover { background: lightblue; color: black; }
 </table>
 </body>
 </html>
-
-
-
-
 
 
 
