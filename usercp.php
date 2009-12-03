@@ -18,12 +18,16 @@ tr:hover { background: lightblue; color: black; }
 
 <h3 class="center"><a href="index.php">home</a> > Games being tracked</h3>
 <?php 
-if ($_SESSION['track_exists'] == true) {
-	$_SESSION['track_exists'] = false;
-	echo '<span class="center">Sorry, you already added that game.</span>';
+if ($_SESSION['result'] === false) {
+	echo '<span class="center" style="font-size:small;">Game was successfully deleted</span>';
+} elseif ($_SESSION['result'] == true) {
+	echo '<span class="center" style="font-size:small;">Game was successfully added</span>';
+} else {
+	//do nothing
 }
+$_SESSION['result'] = NULL;
 ?>
-
+	
 <table class="center">
 <tr class="nohover">
 <th>
@@ -31,16 +35,17 @@ if ($_SESSION['track_exists'] == true) {
 		<select name="toadd">
 		
 		<?php
-		
+		sort($games);
 		foreach ($games as $game) {
 			echo '<option value="' . $game['name'] . '">' . $game['name'] . '</option>';
 		}
-		
 		?>
 		
 		</select>
-		<input type="submit" value="Add">
-	</form>
+		<input type="submit" value="Add/Delete">
+	</form>	
+</th>
+</tr>
 </table>
 
 <table style="margin-left: 30%;">

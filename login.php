@@ -1,5 +1,7 @@
 <?php 
 session_start();
+session_regenerate_id();
+
 
 if ($_GET['logout'] != true) {
 	$userslist = @fopen('users','r');

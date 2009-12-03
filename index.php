@@ -17,7 +17,7 @@ a { font-size:small; }
 
 <table style="margin-left: 9%;">
 <tr class="nohover">
-<td class="nohover">
+<td class="nohover" width="50%">
 	<table>
 	<tr height="17px">
 		<th> Game </th>
@@ -68,7 +68,7 @@ a { font-size:small; }
 				'<input type="submit" value="login"><br>' .
 			'<a href="register.php">register</a></form>';
 			
-			$loggedin = '<form method="get" action="login.php?logout=true">' .
+			$loggedin = '<form style="font-size:small;" method="get" action="login.php?logout=true">' .
 				'Greetings ' . $_SESSION['logname'] . ': ' .
 				'<a href="usercp.php">usercp</a> - ' .
 				'<input type="submit" value="logout">' .
