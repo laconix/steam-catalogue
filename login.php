@@ -17,7 +17,7 @@ if ($_GET['logout'] != true) {
 	}
 
 	foreach ($users as $user) {
-		if (($user['logname'] == $_POST['logname']) && ($user['pass'] == $_POST['logpass'])) {
+		if (($user['logname'] == $_POST['logname']) && ($user['pass'] == md5($_POST['logpass']))) {
 			$_SESSION['loggedin'] = true;
 			$_SESSION['logname'] = $user['logname'];
 		} else {
@@ -27,7 +27,6 @@ if ($_GET['logout'] != true) {
 } else {
 	session_destroy();
 }
-
 header('Location: /index.php');
 
 ?>
