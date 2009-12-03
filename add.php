@@ -4,6 +4,7 @@ if ($_SESSION['loggedin'] != true) {
 	header('Location: /index.php');
 }
 include 'shared.php';
+$tracked = load_trackedgames();
 
 $exists = false;
 if ($tracked) {

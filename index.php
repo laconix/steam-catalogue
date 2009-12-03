@@ -1,6 +1,9 @@
 <?php 
 session_start();
 include 'shared.php';
+$games = load_newgames();
+$oldgames = load_oldgames();
+$tracked = load_trackedgames();
 ?>
 
 <html>

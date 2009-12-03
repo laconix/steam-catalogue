@@ -1,5 +1,6 @@
 <?php
 	/* load list of all steam games (hourly) */
+function load_newgames() {
 	$file = @fopen('steam_new', 'r');
 	if ($file) {
 		$i = 1;
@@ -12,8 +13,11 @@
 		}
 		fclose($file);
 	}
+	return $games;
+}
 
 	/* load list of all steam games (weekly) */
+function load_oldgames() {
 	$oldfile = @fopen('steam_old', 'r');
 	if ($oldfile) {
 		$i = 1;
@@ -26,8 +30,11 @@
 		}
 		fclose($oldfile);
 	}
+	return $oldgames;
+}
 	
 	/* load list of all steam games user is tracking */
+function load_trackedgames() {
 	$trackfile = @fopen('./track/' . $_SESSION['logname'], 'r');
 	if ($trackfile) {
 		$i = 1;
@@ -40,4 +47,6 @@
 		}
 		fclose($trackfile);
 	}
+	return $tracked;
+}
 ?>
