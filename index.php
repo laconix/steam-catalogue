@@ -30,7 +30,7 @@ a { font-size:small; }
 	<?php
 	foreach ($games as $game) {
 		$c = 1;
-		$pos = 1;
+		$pos = -1;
 		foreach ($oldgames as $check) {
 			if ($game['name'] == $check['name']) {
 				$pos = $c;
@@ -95,35 +95,38 @@ a { font-size:small; }
 			<th style="padding-right:35px;"> </th>
 		</tr>
 		<?php
-		$pos = 0;
 		if ($tracked && $_SESSION['loggedin']) {
 			echo '';
 			foreach ($games as $game) {
-				$pos++;
+				$c = 1;
+				$pos = -1;
 				$match = false;
 				foreach ($tracked as $track) {
-					if ($game['name'] == trim($track)) {
-						$match = true;
-					}
-				}
-				if ($match) {
-					echo '<tr><td>' . substr($game['name'], 0, 30) . '</td><td>$' . $oldgames[$pos]['price'] . '</td>';
-					if ($game['price'] > $oldgames[$pos]['price']) {
-						echo '</td><td style="background-image:url(up.PNG);"></td>';
-					} elseif ($game['price'] < $oldgames[$pos]['price']) {
-						echo '</td><td style="background-image:url(down.PNG);"></td>';
-					} else {
-						echo '</td><td style="background-image:url(no.PNG);"></td>';
-					}
-					if ($game['sale']) {
-						echo '<td style="background:yellow;">$' . $game['price'] . '</td><td style="background:red;"> sale </td></tr>';
-					} else {
-						echo '<td>$' . $game['price'] . '</td>';
+						if ($game['name'] == trim($track)) {
+						foreach ($oldgames as $check) {
+							if ($game['name'] == $check['name']) {
+								$pos = $c;
+							}
+							$c++;
+						}
+						echo '<tr><td>' . substr($game['name'], 0, 30) . '</td><td>$' . $oldgames[$pos]['price'] . '</td>';
+						if ($game['price'] > $oldgames[$pos]['price']) {
+							echo '</td><td style="background-image:url(up.PNG);"></td>';
+						} elseif ($game['price'] < $oldgames[$pos]['price']) {
+							echo '</td><td style="background-image:url(down.PNG);"></td>';
+						} else {
+							echo '</td><td style="background-image:url(no.PNG);"></td>';
+						}
+						if ($game['sale']) {
+							echo '<td style="background:yellow;">$' . $game['price'] . '</td><td style="background:red;"> sale </td></tr>';
+						} else {
+							echo '<td>$' . $game['price'] . '</td>';
+						}
 					}
 				}
 			}
 		} else {
-		echo '<td colspan="5"> Not tracking any games </td>';
+			echo '<td colspan="5"> Not tracking any games </td>';
 		}
 	?>
 	</table>
