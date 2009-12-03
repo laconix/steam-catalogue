@@ -6,7 +6,7 @@ if ($_GET['logout'] != true) {
 	if ($userslist) {
 		$i = 1;
 		while (!feof($userslist)) {
-			$buf = fgetcsv($userslist, 0, ":");
+			$buf = fgetcsv($userslist, 0, ':');
 			$users[$i]['logname'] = $buf[0];
 			$users[$i]['pass'] = $buf[1];
 			$i++;

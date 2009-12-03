@@ -12,17 +12,20 @@ include 'shared.php';
 <style>
 table { text-align: left; border-collapse: collapse; }
 tr:hover { background: lightblue; color: black; }
+.center { margin-left: 28%; }
+.nohover { background: white !important; color: black !important; }
 </style>
-<h3>Games being tracked</h3>
+
+<h3 class="center"><a href="index.php">home</a> > Games being tracked</h3>
 <?php 
 if ($_SESSION['track_exists'] == true) {
 	$_SESSION['track_exists'] = false;
-	echo 'Sorry, you already added that game.';
+	echo '<span class="center">Sorry, you already added that game.</span>';
 }
 ?>
 
-<table>
-<tr>
+<table class="center">
+<tr class="nohover">
 <th>
 	<form method="post" action="add.php">
 		<select name="toadd">
@@ -40,7 +43,7 @@ if ($_SESSION['track_exists'] == true) {
 	</form>
 </table>
 
-<table>
+<table style="margin-left: 30%;">
 <tr><th>Games</th></tr>
 <?php
 if ($tracked) {
