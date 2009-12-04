@@ -1,5 +1,11 @@
----
-v.01
+---considerations:
 *make sure you change the static paths in the .bat files.
-*no way to make a user at the moment. add yourself manually
-*no security atm
+*md5 uses no salt
+*everything uses flat files as storage (no database system)
+
+---todos:
+*possible switch over to mysql for data storage
+*better interface
+*->usercp needs easier way to find a game?
+*sorting of main catalogue
+*better look (it isn't that bad at the moment though, tad bland)
