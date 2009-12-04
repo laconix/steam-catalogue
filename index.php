@@ -7,7 +7,13 @@ $tracked = load_trackedgames($_SESSION['name']);
 ?>
 
 <html>
-<head />
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){
+	$("#gamecatalogue table").load("loadgames.php");
+});
+</script>
 <body>
 <style>
 table { text-align: left; border-collapse: collapse; }
@@ -16,49 +22,14 @@ tr:hover { background: lightblue; color: black; }
 a { font-size:small; }
 </style>
 
-
-
 <table style="margin-left: 9%;">
 <tr class="nohover">
 <td class="nohover" width="50%">
-	<table>
-	<tr height="17px">
-		<th> Game </th>
-		<th> SOW </th>
-		<th style="padding:8px;"> </th>
-		<th> NOW </th>
-		<th> </th>
-	</tr>
-
-	<?php
-	foreach ($games as $game) {
-		$c = 1;
-		$pos = -1;
-		foreach ($oldgames as $check) {
-			if ($game['name'] == $check['name']) {
-				$pos = $c;
-			}
-			$c++;
-		}
-		
-		echo '<tr><td>' . substr($game['name'], 0, 30) . '</td><td>$' . $oldgames[$pos]['price'] . '</td>';
-		if ($game['price'] > $oldgames[$pos]['price']) {
-			echo '</td><td style="background-image:url(up.PNG);"></td>';
-		} elseif ($game['price'] < $oldgames[$pos]['price']) {
-			echo '</td><td style="background-image:url(down.PNG);"></td>';
-		} else {
-			echo '</td><td style="background-image:url(no.PNG);"></td>';
-		}
-		if ($game['sale']) {
-			echo '<td style="background:yellow;">$' . $game['price'] . '</td><td style="background:red;"> sale </td></tr>';
-		} else {
-			echo '<td>$' . $game['price'] . '</td>';
-		}
-
-	}
-
-	?>
-	</table>
+	<div id="gamecatalogue">
+		<table>
+		</table>
+		loading
+	</div>
 </td>
 <td width="100%" valign="top" align="left" class="nohover">
 	<table>
