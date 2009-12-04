@@ -8,7 +8,7 @@ $tracked = load_trackedgames();
 
 $exists = false;
 if ($tracked) {
-	$trackfile = @fopen('./track/' . $_SESSION['logname'], 'w');
+	$trackfile = @fopen('./track/' . $_SESSION['name'], 'w');
 	foreach ($tracked as $track) {
 		if (trim($track) == $_POST['toadd']) {
 			$exists = true;
@@ -23,7 +23,7 @@ if ($exists) {
 	$_SESSION['result'] = false;
 } else {
 	$_SESSION['result'] = true;
-	file_put_contents('./track/' . $_SESSION['logname'], $_POST['toadd'] . "\n",FILE_APPEND);
+	file_put_contents('./track/' . $_SESSION['name'], $_POST['toadd'] . "\n",FILE_APPEND);
 }
 header('Location: /usercp.php');
 ?>

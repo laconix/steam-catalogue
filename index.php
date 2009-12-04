@@ -3,7 +3,7 @@ session_start();
 include 'shared.php';
 $games = load_newgames();
 $oldgames = load_oldgames();
-$tracked = load_trackedgames();
+$tracked = load_trackedgames($_SESSION['name']);
 ?>
 
 <html>
@@ -65,19 +65,18 @@ a { font-size:small; }
 		<tr style="color: red;">				
 		<td class="nohover" align="right" colspan=4>
 			<?php
-			$login = '<form method="post" action="login.php">' .
-				'<input style="border:1px solid gray;" name="logname" type="text">' .
-				'<input style="border:1px solid gray;" name="logpass" type="password">' .
+			$login = '<form method="post" action="login.php?login=true">' .
+				'<input style="border:1px solid gray;" name="name" type="text">' .
+				'<input style="border:1px solid gray;" name="pass" type="password">' .
 				'<input type="submit" value="login"><br>' .
 			'<a href="register.php">register</a></form>';
 			
-			$loggedin = '<form style="font-size:small;" method="get" action="login.php?logout=true">' .
-				'Greetings ' . $_SESSION['logname'] . ': ' .
+			$loggedin = '<form style="font-size:small;" method="post" action="login.php?logout=true">' .
+				'Greetings ' . $_SESSION['name'] . ': ' .
 				'<a href="usercp.php">usercp</a> - ' .
 				'<input type="submit" value="logout">' .
 			'</form>';
-			
-			if ($_SESSION['loggedin'] == true) {
+			if (isset($_SESSION['loggedin'])) {
 				echo $loggedin;
 			} else {
 				echo $login;

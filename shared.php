@@ -1,4 +1,20 @@
 <?php
+	/* load userlist */
+function load_userlist() {
+	$userslist = @fopen('users','r');
+	if ($userslist) {
+		$i = 1;
+		while (!feof($userslist)) {
+			$buf = fgetcsv($userslist, 0, ':');
+			$users[$i]['name'] = $buf[0];
+			$users[$i]['pass'] = $buf[1];
+			$i++;
+		}
+		fclose($userslist);
+	}
+	return $users;
+}
+
 	/* load list of all steam games (hourly) */
 function load_newgames() {
 	$file = @fopen('steam_new', 'r');
@@ -34,8 +50,8 @@ function load_oldgames() {
 }
 	
 	/* load list of all steam games user is tracking */
-function load_trackedgames() {
-	$trackfile = @fopen('./track/' . $_SESSION['logname'], 'r');
+function load_trackedgames($name) {
+	$trackfile = @fopen('./track/' . $name, 'r');
 	if ($trackfile) {
 		$i = 1;
 		while (!feof($trackfile)) {

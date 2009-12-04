@@ -6,7 +6,7 @@ if ($_SESSION['loggedin'] != true) {
 include 'shared.php';
 $games = load_newgames();
 $oldgames = load_oldgames();
-$tracked = load_trackedgames();
+$tracked = load_trackedgames($_SESSION['name']);
 ?>
 
 <html>
