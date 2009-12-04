@@ -4,13 +4,13 @@ if ($_SESSION['loggedin'] != true) {
 	header('Location: /index.php');
 }
 include 'shared.php';
-$tracked = load_trackedgames();
+$tracked = load_trackedgames($_SESSION['name']);
 
 $exists = false;
 if ($tracked) {
 	$trackfile = @fopen('./track/' . $_SESSION['name'], 'w');
 	foreach ($tracked as $track) {
-		if (trim($track) == $_POST['toadd']) {
+		if (trim($track) == trim($_POST['toadd'])) {
 			$exists = true;
 		} else {
 			fputs($trackfile, $track);
