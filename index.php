@@ -28,7 +28,7 @@ a { font-size:small; }
 	<div id="gamecatalogue">
 		<table>
 		</table>
-		loading
+		loading...
 	</div>
 </td>
 <td width="100%" valign="top" align="left" class="nohover">

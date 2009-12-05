@@ -16,5 +16,5 @@ if ($_GET['login']) {
 	}
 }
 
-header('Location: /index.php');
+header('Location: index.php');
 ?>

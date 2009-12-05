@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if ($_SESSION['loggedin'] != true) {
-	header('Location: /index.php');
+	header('Location: index.php');
 }
 include 'shared.php';
 $games = load_newgames();
