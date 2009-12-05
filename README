@@ -1,11 +1,5 @@
----considerations:
-*make sure you change the static paths in the .bat files.
-*md5 uses no salt
-*everything uses flat files as storage (no database system)
-
----todos:
-*possible switch over to mysql for data storage
-*better interface
-*->usercp needs easier way to find a game?
-*sorting of main catalogue
-*better look (it isn't that bad at the moment though, tad bland)
+-------------------!!!!!!!!!-------JQUERY-EXPERIMENTAL-BRANCH-------!!!!!!!!!-----------------------
+|
+|   Don't expect it work most of the time. :D 
+|   Right now it's all just testing. I've barely touched JQuery before but this like like a good 
+|   project to strech my fingers on. :)
