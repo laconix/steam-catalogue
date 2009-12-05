@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if ($_SESSION['loggedin'] != true) {
-	header('Location: /index.php');
+	header('Location: index.php');
 }
 include 'shared.php';
 $tracked = load_trackedgames($_SESSION['name']);
@@ -25,5 +25,5 @@ if ($exists) {
 	$_SESSION['result'] = true;
 	file_put_contents('./track/' . $_SESSION['name'], $_POST['toadd'] . "\n",FILE_APPEND);
 }
-header('Location: /usercp.php');
+header('Location: usercp.php');
 ?>
